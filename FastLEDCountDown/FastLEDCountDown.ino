@@ -1,7 +1,7 @@
 #include <FastLED.h>
 
 // How many leds in your strip?
-#define NUM_LEDS 4
+#define NUM_LEDS 16
 
 // For led chips like WS2812, which have a data line, ground, and power, you just
 // need to define DATA_PIN.  For led chipsets that are SPI based (four wires - data, clock,
@@ -18,6 +18,7 @@ int counter = 0;
 void renderCounter(int c) {
   for (int i = 0; i < NUM_LEDS; ++i) {
     if (counter & (1 << i)) {
+      // Low brightness white because I don't want to blind myself
       leds[i].setRGB(10, 10, 10);
     } else {
       leds[i] = CRGB::Black;
